@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #fffid {
+            color: rgb(28, 42, 232);
+            font-size: 1.5rem;
+        }
+
+        #fffid2 {
+            color: rgb(28, 42, 232);
+            font-size: 1.5rem;
+            background-color: rgb(188, 192, 255);
+            margin-top: 1%;
+        }
+
+        #fffid3 {
+            color: rgb(28, 42, 232);
+            font-size: 1.5rem;
+            background-color: rgb(188, 192, 255);
+            margin: 0 0 10% 10%;
+        }
+
+        #filehash {
+            color: rgb(28, 42, 232);
+            font-size: 1.5rem;
+            background-color: rgb(188, 192, 255);
+            margin: 0 5% 10% 10%;
+        }
+
+        #formi {
+            margin: 0 10% 10% 10%;
+        }
+
+        img {
+            width: 20%;
+            height: auto;
+            border: 8%;
+            padding: 0;
+            margin: 0 10%;
+        }
+    </style>
+</head>
+
+    <body>
+        <img src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/google_nexus-512.png" alt="image">
+
+        <form action="/profile" method="post" enctype="multipart/form-data" id="formi">
+            <input type="file" name="avatar" id="fffid" />
+            <button id="fffid2">upload</button>
+        </form>
+        <input id="filehash" type="text">
+        <button onclick="loadDoc()" id="fffid2">download</button>
+        <button onclick="redirecta()" id="fffid3">Logout</button>
+    </body>
+<script>
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // document.getElementById("demo").innerHTML = this.responseText;
+                console.log(this);
+                window.open(this.responseURL);
+            }
+        };
+        console.log(document.getElementById("filehash").value)
+        xhttp.open("GET", "download/" + document.getElementById("filehash").value, true);
+        xhttp.send();
+    }
+    function redirecta() {
+        window.location.replace('http://localhost:3001');
+    }
+</script>
+
+</html>
